@@ -1,5 +1,6 @@
 const calculadora = require('./calculadora.js');
 const idade = require('./idade.js');
+const notas = require('./notas.js');
 const prompt = require('prompt-sync')({sigint: true});
 
 function mostrarMenu(){
@@ -10,6 +11,7 @@ function mostrarMenu(){
     console.log('Escolha uma opção para iniciar um dos programas disponíveis:\n');
     console.log('1 - Calculadora');
     console.log('2 - Verificador de idade');
+    console.log('3 - Nota de alunos');
     console.log('0 - Sair...');
 }
 
@@ -24,6 +26,9 @@ do {
         case '2':
             idade.principal();
             break;
+        case '3':
+            notas.defineNota();
+            break;
         case '0':
             console.log('Saindo 👋...');
             condicao = false;
@@ -31,6 +36,13 @@ do {
         default:
             console.log('Opção inválida!');
     }
+
+    const continuar = prompt('\nDeseja continuar? (S/N)');
+    if(continuar === "N"){
+        condicao = false;
+        console.log("Saindo... 😁");
+    }
+
 } while (condicao);
 
 // Temos um bug! O usuário ao finalizar a execução de um dos programas ao invés de ser
